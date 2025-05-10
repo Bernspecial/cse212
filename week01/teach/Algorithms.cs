@@ -6,14 +6,14 @@ public static class Algorithms {
             "alg1-time", "alg2-time", "alg3-time");
         Console.WriteLine("{0,15}{0,15}{0,15}{0,15}{0,15}{0,15}{0,15}", "----------");
 
-        for (int n = 0; n < 15001; n += 1000) {
-            int count1 = Algorithm1(n);
-            int count2 = Algorithm2(n);
-            int count3 = Algorithm3(n);
-            double time1 = Time(Algorithm1, n, 10);
-            double time2 = Time(Algorithm2, n, 10);
-            double time3 = Time(Algorithm3, n, 10);
-            Console.WriteLine("{0,15}{1,15}{2,15}{3,15}{4,15:0.00000}{5,15:0.00000}{6,15:0.00000}", n, count1, count2,
+        for (int i = 0; i < 15001; i += 1000) {
+            int count1 = Algorithm1(i);
+            int count2 = Algorithm2(i);
+            int count3 = Algorithm3(i);
+            double time1 = Time(Algorithm1, i, 10);
+            double time2 = Time(Algorithm2, i, 10);
+            double time3 = Time(Algorithm3, i, 10);
+            Console.WriteLine("{0,15}{1,15}{2,15}{3,15}{4,15:0.00000}{5,15:0.00000}{6,15:0.00000}", i, count1, count2,
                 count3, time1, time2,
                 time3);
         }
