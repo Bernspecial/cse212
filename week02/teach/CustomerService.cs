@@ -14,7 +14,9 @@ public class CustomerService {
         // Scenario: 
         // Expected Result: 
         Console.WriteLine("Test 1");
-
+        var customer = new CustomerService(5);
+        customer.AddNewCustomer();
+        customer.ServeCustomer();
         // Defect(s) Found: 
 
         Console.WriteLine("=================");
@@ -23,6 +25,14 @@ public class CustomerService {
         // Scenario: 
         // Expected Result: 
         Console.WriteLine("Test 2");
+        var serve = new CustomerService(5);
+        serve.AddNewCustomer();
+        serve.AddNewCustomer();
+        Console.WriteLine($"Before serving customers: {serve}");
+        serve.ServeCustomer();
+        serve.ServeCustomer();
+        Console.WriteLine($"After serving customers: {serve}");
+        
 
         // Defect(s) Found: 
 

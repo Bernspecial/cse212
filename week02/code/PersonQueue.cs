@@ -13,7 +13,9 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+        // The current code uses Insert(0, person) to add a person to the start of the list, which makes it act like a stack
+        // (Last-In-First-Out, or LIFO). This means the most recently added person is the first one removed, which isn't what we want. Instead, we need a queue-like behavior (First-In-First-Out, or FIFO), where the first person added is the first one removed. To fix this, we should add new people to the end of the list, not the front.
+        _queue.Add(person);
     }
 
     public Person Dequeue()
