@@ -25,6 +25,10 @@ public class Translator
     public void AddWord(string fromWord, string toWord)
     {
         // ADD YOUR CODE HERE
+        var english = fromWord;
+        var german = toWord;
+
+        _words[english] = german;
     }
 
     /// <summary>
@@ -35,6 +39,11 @@ public class Translator
     public string Translate(string fromWord)
     {
         // ADD YOUR CODE HERE
-        return "";
+        string newword = "???";
+        if (_words.ContainsKey(fromWord))
+        {
+            newword = _words[fromWord];
+        }
+        return newword;
     }
 }

@@ -22,7 +22,25 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        HashSet<string> data = new HashSet<string>(words);
+        List<string> result = new List<string>();
+
+        foreach (string word in words)
+        {
+            if (!data.Contains(word))
+                continue;
+
+            string reversed = new string(new char[] { word[1], word[0] });
+            if (reversed != word && data.Contains(reversed))
+            {
+                result.Add($"{word} & {reversed}");
+                data.Remove(reversed);
+                data.Remove(word);
+
+            }
+        }
+
+        return result.ToArray();
     }
 
     /// <summary>
@@ -43,6 +61,19 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            if (fields.Length > 3)
+            {
+                string degree = fields[3].Trim();
+                if (degrees.ContainsKey(degree))
+                {
+                    degrees[degree]++;
+                }
+                else
+                    degrees[degree] = 1;
+            }
+
+
+
         }
 
         return degrees;
@@ -66,8 +97,55 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+
+        if (word1.Length != word2.Length)
+        {
+            return false;
+        }
+
+        Dictionary<char, int> anagram = new Dictionary<char, int>();
+
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        foreach (var word in word1)
+        {
+            if (anagram.ContainsKey(word))
+            {
+                anagram[word]++;
+            }
+            else
+            {
+                anagram[word] = 1;
+            }
+        }
+
+        foreach (var word in word2)
+        {
+            if (anagram.ContainsKey(word))
+            {
+                anagram[word]--;
+                if (anagram[word] < 0)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        foreach (var count in anagram.Values)
+        {
+            if (count != 0)
+            {
+                return false;
+            }
+        }
+
+
+        return true;
     }
 
     /// <summary>
